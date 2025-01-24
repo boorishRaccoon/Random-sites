@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let image = 'ratFat.jpg';
+        var audio = new Audio('yipay.mp3');
+        let size = 720;
+        let height = size;
+        let width = size;
+
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function becomeSilly() {
+            let myImg = document.getElementById("image");
+            audio.play();
+            await delay(1000); 
+            image = 'ratSilly.png'
+            myImg.src = image;
+            while (true) {
+                while (width > 600) {
+                    width -= 40;
+                    height += 40;
+                    myImg.height = height;
+                    myImg.width = width;
+                    await delay(1)
+                }
+                while (height > 500) {
+                    width += 40;
+                    height -= 40;
+                    myImg.height = height;
+                    myImg.width = width;
+                    await delay(1)
+                }
+            }
+            
+        }
+    </script>
+    <button onclick="becomeSilly()"><img id="image" src="ratFat.jpg" width="720px" height="720px"></button>
+    <p>3</p>
+    <script>
+        document.getElementById("imageLink").textContent = image;
+    </script>
+    
+</body>
+</html>
